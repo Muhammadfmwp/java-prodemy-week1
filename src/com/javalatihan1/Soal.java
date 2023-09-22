@@ -68,14 +68,15 @@ public class Soal {
         }
 
         System.out.println();
+        Mahasiswa mahasiswaTermuda = null;
         int umurTermuda = umurMhs[0].getUmur();
         for (int i = 0; i < umurMhs.length; i ++){
             if (umurTermuda > umurMhs[i].getUmur()){
-                umurTermuda = umurMhs[i].getUmur();
+                mahasiswaTermuda = umurMhs[i];
             }
         }
 
-        System.out.print("Umur termuda dari mahasiswa adalah " + umurTermuda);
+        System.out.print("Umur termuda dari mahasiswa adalah \n" + mahasiswaTermuda);
     }
 
     private static int[] urutTerkecil(int[] array){
