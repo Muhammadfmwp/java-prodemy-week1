@@ -1,6 +1,20 @@
+package com.javalatihan1;
+
+import java.time.LocalDate;
+
 public class Mahasiswa {
     private String nama, nim;
     private MyDate tanggalLahir;
+
+    public Mahasiswa() {
+    }
+
+    public Mahasiswa(String nim, String nama, MyDate tanggalLahir) {
+        this.nama = nama;
+        this.nim = nim;
+        this.tanggalLahir = tanggalLahir;
+    }
+
 
     public void setNama(String nama) throws Exception {
         if (nama.matches(",'[1234567890],'")) {
@@ -35,4 +49,13 @@ public class Mahasiswa {
     public String toString() {
         return "Nim: " + this.nim + "\n" + "Nama: " + this.nama + "\n" + "Tanggal lahir: " + this.tanggalLahir;
     }
+
+    public int getUmur() {
+        LocalDate currentdate = LocalDate.now();
+        int tahunIni = currentdate.getYear();
+        int tahunLahir = this.getTanggalLahir().getYear();
+        int umur = tahunIni - tahunLahir;
+        return umur;
+    }
+
 }

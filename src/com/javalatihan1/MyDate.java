@@ -1,3 +1,5 @@
+package com.javalatihan1;
+
 import java.time.*;
 public class MyDate {
     private int day;

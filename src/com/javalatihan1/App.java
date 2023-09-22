@@ -1,3 +1,5 @@
+package com.javalatihan1;
+
 public class App {
     public static void main(String Args[]) throws Exception {
     MyDate tanggalLahir = new MyDate();
