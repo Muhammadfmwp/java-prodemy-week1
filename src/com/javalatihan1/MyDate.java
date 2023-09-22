@@ -4,6 +4,15 @@ public class MyDate {
     private int month;
     private int year;
 
+    public MyDate() {
+    }
+
+    public MyDate(int day, int month, int year) {
+        this.day = day;
+        this.month = month;
+        this.year = year;
+    }
+
     public void setDay(int day) throws Exception {
         if (day < 1 || day > 31) {
             throw new Exception("Tanggal hari salah");
