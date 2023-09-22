@@ -1,5 +1,7 @@
 package com.javalatihan1;
 
+import java.util.Arrays;
+
 public class Soal {
     public static void main(String[] args) throws Exception {
 
@@ -48,38 +50,64 @@ public class Soal {
 
         System.out.println("Bilangan terbesar dari array 1 adalah " + bilanganTerbesar);
 
-        Mahasiswa mhs1 = new Mahasiswa("123123","Satrio", new MyDate(2,3,2002));
-        Mahasiswa mhs2 = new Mahasiswa();
-        Mahasiswa mhs3 = new Mahasiswa();
+        Mahasiswa mhs1 = new Mahasiswa("123123","Satrio", new MyDate(2,3,2010));
+        Mahasiswa mhs2 = new Mahasiswa("123113","Rose", new MyDate(4,5,2002));
+        Mahasiswa mhs3 = new Mahasiswa("191004","Marie",new MyDate(6,18,2005));
 
-        mhs2.setNama("Rose");
-        mhs2.setNim("12312");
-        mhs2.setTanggalLahir(new MyDate(11,2,2014));
 
-        mhs3.setNama("Test");
-        mhs3.setNim("3123123");
-        mhs3.setTanggalLahir(new MyDate(20,5,2001));
 
-        Mahasiswa[] umurMhs = {mhs1, mhs2, mhs3};
 
-        System.out.print("Umur mahasiswa yang ada :");
-        for (Mahasiswa umur: umurMhs){
-            System.out.print(umur.getUmur());
+
+        Mahasiswa mhs4 = new Mahasiswa("19123133","Radyan", new MyDate(5,8,2012));
+        Mahasiswa mhs5 = new Mahasiswa("20131113","Disa", new MyDate(19,11,2006));
+
+        Mahasiswa[] kumpulanMhs = {mhs1, mhs2, mhs3, mhs4, mhs5};
+
+        System.out.println("=========================");
+
+        System.out.println("Mahasiswa yang ada :");
+        for (Mahasiswa umur: kumpulanMhs){
+            System.out.print(umur);
         }
+        System.out.println();
+        System.out.println("===========Soal Mahasiswa==============");
 
         System.out.println();
-        Mahasiswa mahasiswaTermuda = null;
-        int umurTermuda = umurMhs[0].getUmur();
-        for (int i = 0; i < umurMhs.length; i ++){
-            if (umurTermuda > umurMhs[i].getUmur()){
-                mahasiswaTermuda = umurMhs[i];
+        Mahasiswa mahasiswaTermuda = kumpulanMhs[0];
+        int umurTermuda = Helper.getUmur(kumpulanMhs[0]);
+        for (int i = 0; i < kumpulanMhs.length; i++){
+            Mahasiswa m = kumpulanMhs[i];
+            if (umurTermuda > Helper.getUmur(m)){
+                mahasiswaTermuda = m;
             }
         }
 
-        System.out.print("Umur termuda dari mahasiswa adalah \n" + mahasiswaTermuda);
+
+        System.out.print("Mahasiswa termuda dari kumpulan mahasiswa adalah \n" + mahasiswaTermuda);
+        System.out.println();
+
+
+        // Tugas
+        System.out.println("===========Tugas==============");
+        Mahasiswa dataWadahMahasiswa = kumpulanMhs[0];
+        int mhsTermuda = Helper.getUmur(kumpulanMhs[0]);
+        for (int i = 0; i < kumpulanMhs.length; i++){
+            for (int j = i+1; j < kumpulanMhs.length;j++)
+                if (Helper.getUmur(kumpulanMhs[i]) > Helper.getUmur(kumpulanMhs[j])){
+                    dataWadahMahasiswa = kumpulanMhs[i];
+                    kumpulanMhs[i] = kumpulanMhs[j];
+                    kumpulanMhs[j] = dataWadahMahasiswa;
+                }
+        }
+        System.out.println("Urutan mahasiswa dari yang termuda adalah");
+
+
+        for (Mahasiswa m: kumpulanMhs) {
+            System.out.println(m);
+        }
     }
 
-    private static int[] urutTerkecil(int[] array){
+    private static int[] urutTerkecil(int[] array) {
         int tukar;
         for (int j = 0 ; j < array.length - 1; j++) {
             for (int i = 0; i < array.length - j - 1; i++) {
@@ -94,7 +122,7 @@ public class Soal {
         return array;
     }
 
-    private static int[] urutTerbesar(int[] array){
+    private static int[] urutTerbesar(int[] array) {
         int tukar;
         for (int j = 0 ; j < array.length - 1; j++) {
             for (int i = 0; i < array.length - j - 1; i++) {
@@ -108,4 +136,7 @@ public class Soal {
         }
         return array;
     }
+
+
+
 }

@@ -73,18 +73,19 @@ public class HitungUmur {
 
         System.out.print("Umur mahasiswa yang ada :");
         for (Mahasiswa umur: umurMhs){
-            System.out.print(umur.getUmur());
+            System.out.print(Helper.getUmur(umur));
         }
 
         System.out.println();
-        int umurTermuda = umurMhs[0].getUmur();
+        Mahasiswa mahasiswaTermuda = umurMhs[0];
+        int umurTermuda = Helper.getUmur(umurMhs[0]);
         for (int i = 0; i < umurMhs.length; i ++){
-            if (umurTermuda > umurMhs[i].getUmur()){
-                umurTermuda = umurMhs[i].getUmur();
+            if (umurTermuda > Helper.getUmur(umurMhs[i])){
+                mahasiswaTermuda = umurMhs[i];
             }
         }
 
-        System.out.print("Umur termuda dari mahasiswa adalah " + umurTermuda);
+        System.out.print("Umur termuda dari mahasiswa adalah " + mahasiswaTermuda);
     }
 
     public static String cetakUmur(Mahasiswa mhs) {
@@ -128,6 +129,14 @@ public class HitungUmur {
             }
         }
         return array;
+    }
+
+    public static int getUmur(Mahasiswa m) {
+        int umur;
+        int bulanSekarang = (2003 * 12) + 9;
+        int bulanLahir = (m.getTanggalLahir().getYear()*12) + m.getTanggalLahir().getMonth();
+        umur = bulanSekarang - bulanLahir;
+        return umur;
     }
 
 }

@@ -50,12 +50,6 @@ public class Mahasiswa {
         return "Nim: " + this.nim + "\n" + "Nama: " + this.nama + "\n" + "Tanggal lahir: " + this.tanggalLahir;
     }
 
-    public int getUmur() {
-        LocalDate currentdate = LocalDate.now();
-        int tahunIni = currentdate.getYear();
-        int tahunLahir = this.getTanggalLahir().getYear();
-        int umur = tahunIni - tahunLahir;
-        return umur;
-    }
+
 
 }
